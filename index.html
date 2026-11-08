@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Inspector RITEL y TDT</title>
+<meta name="theme-color" content="#0b6b57">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat@1.43.1/dist/style.css" rel="stylesheet">
+<style>
+  :root { --chat--color-primary: #0b6b57; --chat--color-primary-shade-50: #095a4a; --chat--color-primary-shade-100: #07493c; --chat--header--background: #0b6b57; --chat--header--color: #fff; }
+  html, body, #n8n-chat { height: 100%; margin: 0; }
+  body { background: #fff; }
+  @media (prefers-color-scheme: dark) { body { background: #111; } }
+</style>
+</head>
+<body>
+<div id="n8n-chat"></div>
+<script type="module">
+  import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat@1.43.1/dist/chat.bundle.es.js';
+  createChat({
+    webhookUrl: 'https://fc-4a4f7a295ea24301b5b27f.app.n8n.cloud/webhook/1d881030-caab-4bdd-8809-4618e182cda4/chat',
+    target: '#n8n-chat',
+    mode: 'fullscreen',
+    showWelcomeScreen: false,
+    loadPreviousSession: false,
+    defaultLanguage: 'en',
+    initialMessages: [
+      'Hola, soy el asistente de inspección RITEL y TDT.',
+      'Dime las fechas del proyecto (licencia, radicación, preventa) y te indico qué resolución aplica.'
+    ],
+    i18n: { en: {
+      title: 'Inspector RITEL y TDT',
+      subtitle: 'Apoyo a la inspección (GIN-PR-09)',
+      footer: '',
+      getStarted: 'Nueva conversación',
+      inputPlaceholder: 'Escribe tu pregunta...',
+      closeButtonTooltip: 'Cerrar'
+    } }
+  });
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+</script>
+</body>
+</html>
